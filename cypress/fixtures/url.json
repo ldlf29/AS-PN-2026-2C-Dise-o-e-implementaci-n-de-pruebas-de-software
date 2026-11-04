@@ -2,5 +2,7 @@
   "home": "https://app.bookdb.online/",
   "login": "https://app.bookdb.online/login",
   "cart": "https://app.bookdb.online/shopping-cart",
+  "checkout": "https://app.bookdb.online/checkout",
+  "myOrders": "https://app.bookdb.online/myorders",
   "api": "https://app.bookdb.online/api"
 }

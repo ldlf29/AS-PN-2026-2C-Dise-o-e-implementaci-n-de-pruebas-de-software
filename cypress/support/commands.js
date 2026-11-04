@@ -1,5 +1,6 @@
 const pageLogin = require('./page_objects/pageLogin')
 const url = require('../fixtures/url.json')
+const checkout = require('../fixtures/checkout.json')
 
 Cypress.Commands.add('login', (name, password) => {
     pageLogin.typeUserName(name);
@@ -35,6 +36,22 @@ Cypress.Commands.add('deleteCartAPI', (userId) => {
         }
     }).then((response) => {
         expect(response.status).to.eq(200)
+    })
+})
+
+Cypress.Commands.add('postCheckOutAPI', (userId, token, codeResponse) => {
+    cy.request({
+        method: 'POST',
+        url: `${url.api}/CheckOut/${userId}`,
+        failOnStatusCode: false,
+        headers: {
+            accept: 'application/json',
+            'content-type': 'application/json',
+            authorization: token
+        },
+        body: checkout
+    }).then((response) => {
+        expect(response.status).to.eq(codeResponse)
     })
 })
 

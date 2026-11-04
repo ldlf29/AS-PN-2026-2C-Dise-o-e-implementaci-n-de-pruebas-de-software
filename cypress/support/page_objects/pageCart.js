@@ -8,6 +8,10 @@ class pageCart {
         cy.get('app-shoppingcart').contains('tr', title).contains('mat-icon', 'delete').click()
     }
 
+    clickCheckoutButton() {
+        cy.get('app-shoppingcart').contains('button', 'CheckOut').click()
+    }
+
     isCartEmpty() {
         cy.get('app-shoppingcart').contains('Your shopping cart is empty.').should('be.visible')
     }
