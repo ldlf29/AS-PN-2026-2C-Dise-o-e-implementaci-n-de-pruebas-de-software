@@ -1,0 +1,25 @@
+{
+  "name": "cypress-lucas-delafuente",
+  "version": "1.0.0",
+  "description": "Proyecto final Cypress - BookDB",
+  "main": "index.js",
+  "scripts": {
+    "cy:open": "cypress open",
+    "test": "cypress run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ldlf29/AS-PN-2026-2C-Dise-o-e-implementaci-n-de-pruebas-de-software.git"
+  },
+  "keywords": [],
+  "author": "Lucas de la Fuente",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ldlf29/AS-PN-2026-2C-Dise-o-e-implementaci-n-de-pruebas-de-software/issues"
+  },
+  "homepage": "https://github.com/ldlf29/AS-PN-2026-2C-Dise-o-e-implementaci-n-de-pruebas-de-software#readme",
+  "devDependencies": {
+    "cypress": "^16.2.0"
+  }
+}
