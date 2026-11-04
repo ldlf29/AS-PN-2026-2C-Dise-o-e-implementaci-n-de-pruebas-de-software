@@ -2,6 +2,8 @@ import user from '../fixtures/user.json'
 import url from '../fixtures/url.json'
 import book from '../fixtures/book.json'
 import shipping from '../fixtures/shipping.json'
+import login from '../fixtures/login.json'
+const pageLogin = require('../support/page_objects/pageLogin')
 const pageHome = require('../support/page_objects/pageHome')
 const pageCart = require('../support/page_objects/pageCart')
 const pageCheckout = require('../support/page_objects/pageCheckout')
@@ -45,6 +47,22 @@ describe('Casos de prueba de FRONT', () => {
     pageOrders.isBookInFirstOrder(book.title)
   })
 
+  it('Filtrar lista de libros por categoría | Yutzura Marcano', () => {
+
+    cy.visit(url.home)
+    pageHome.isBookVisible(book.title)
+
+    pageHome.clickCategory(book.category)
+    cy.url().should('include', `category=${book.category.toLowerCase()}`)
+    pageHome.isCategorySelected(book.category)
+
+    cy.getBooksAPI().then((books) => {
+      const titles = books.filter((item) => item.category === book.category).map((item) => item.title)
+      expect(titles.length).to.be.lessThan(books.length)
+      pageHome.validateBookList(titles)
+    })
+  })
+
   it('Eliminar un libro del carrito y visualizar el contador en 0 | Lucas de la Fuente', () => {
 
     cy.loginAPI(user.username, user.password).then((session) => {
@@ -69,6 +87,14 @@ describe('Casos de prueba de FRONT', () => {
     componentToast.validateMessage('Book removed from cart')
     pageCart.isCartEmpty()
     componentNav.validationNumberCartBadge('0')
+  })
+
+  it('Validar error al intentar iniciar sesión con contraseña incorrecta | Andrea Ponce', () => {
+
+    cy.visit(url.login)
+    cy.login(user.username, login.invalidPassword)
+    pageLogin.isErrorMessageVisible(login.errorMessage)
+    cy.url().should('eq', url.login)
   })
 
 })
