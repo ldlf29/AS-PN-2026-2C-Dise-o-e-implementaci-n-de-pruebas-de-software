@@ -1,18 +1,17 @@
 {
-  "name": "cypress-lucas-delafuente",
+  "name": "cypress-grupo4",
   "version": "1.0.0",
-  "description": "Proyecto final Cypress - BookDB",
+  "description": "Proyecto final Cypress - BookDB - Grupo 4",
   "main": "index.js",
   "scripts": {
-    "cy:open": "cypress open",
-    "test": "cypress run"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ldlf29/AS-PN-2026-2C-Dise-o-e-implementaci-n-de-pruebas-de-software.git"
   },
   "keywords": [],
-  "author": "Lucas de la Fuente",
+  "author": "Grupo 4",
   "license": "ISC",
   "type": "commonjs",
   "bugs": {
