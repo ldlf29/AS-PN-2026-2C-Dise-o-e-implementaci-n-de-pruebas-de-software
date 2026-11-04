@@ -3,6 +3,7 @@ import url from '../fixtures/url.json'
 import book from '../fixtures/book.json'
 import shipping from '../fixtures/shipping.json'
 import login from '../fixtures/login.json'
+import category from '../fixtures/category.json'
 const pageHome = require('../support/page_objects/pageHome')
 const pageCart = require('../support/page_objects/pageCart')
 const pageCheckout = require('../support/page_objects/pageCheckout')
@@ -51,15 +52,10 @@ describe('Casos de prueba de FRONT', () => {
     cy.visit(url.home)
     pageHome.isBookVisible(book.title)
 
-    pageHome.clickCategory(book.category)
-    cy.url().should('include', `category=${book.category.toLowerCase()}`)
-    pageHome.isCategorySelected(book.category)
-
-    cy.getBooksAPI().then((books) => {
-      const titles = books.filter((item) => item.category === book.category).map((item) => item.title)
-      expect(titles.length).to.be.lessThan(books.length)
-      pageHome.validateBookList(titles)
-    })
+    pageHome.clickCategory(category.name)
+    cy.url().should('eq', url.filterMystery)
+    pageHome.isCategorySelected(category.name)
+    pageHome.validateBookList(category.books)
   })
 
   it('Eliminar un libro del carrito y visualizar el contador en 0 | Lucas de la Fuente', () => {

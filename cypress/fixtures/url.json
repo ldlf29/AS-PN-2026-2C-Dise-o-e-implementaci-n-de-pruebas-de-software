@@ -4,5 +4,6 @@
   "cart": "https://app.bookdb.online/shopping-cart",
   "checkout": "https://app.bookdb.online/checkout",
   "myOrders": "https://app.bookdb.online/myorders",
+  "filterMystery": "https://app.bookdb.online/filter?category=mystery",
   "api": "https://app.bookdb.online/api"
 }

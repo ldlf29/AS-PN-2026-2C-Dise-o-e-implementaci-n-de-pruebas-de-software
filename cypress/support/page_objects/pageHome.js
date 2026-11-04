@@ -24,9 +24,9 @@ class pageHome {
         cy.get('app-book-filter').contains('mat-list-item', category).should('have.class', 'active-category')
     }
 
-    validateBookList(titles) {
-        cy.get('app-book-card').should('have.length', titles.length)
-        titles.forEach((title) => {
+    validateBookList(books) {
+        cy.get('app-book-card').should('have.length', books.length)
+        books.forEach((title) => {
             cy.contains('app-book-card', title).should('be.visible')
         })
     }
