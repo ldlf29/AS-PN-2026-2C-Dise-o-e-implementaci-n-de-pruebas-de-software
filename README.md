@@ -23,3 +23,4 @@ npx cypress run
 
 ## Integrantes
 * Andrea Ponce
+* Yutzura Marcano
