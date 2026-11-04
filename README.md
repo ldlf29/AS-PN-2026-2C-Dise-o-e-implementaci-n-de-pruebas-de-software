@@ -19,3 +19,7 @@ O por consola:
 ```
 npx cypress run
 ```
+
+
+## Integrantes
+* Andrea Ponce
