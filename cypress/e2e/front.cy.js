@@ -3,7 +3,6 @@ import url from '../fixtures/url.json'
 import book from '../fixtures/book.json'
 import shipping from '../fixtures/shipping.json'
 import login from '../fixtures/login.json'
-const pageLogin = require('../support/page_objects/pageLogin')
 const pageHome = require('../support/page_objects/pageHome')
 const pageCart = require('../support/page_objects/pageCart')
 const pageCheckout = require('../support/page_objects/pageCheckout')
@@ -91,10 +90,13 @@ describe('Casos de prueba de FRONT', () => {
 
   it('Validar error al intentar iniciar sesión con contraseña incorrecta | Andrea Ponce', () => {
 
+    cy.intercept('POST', '**/api/login').as('login')
+
     cy.visit(url.login)
     cy.login(user.username, login.invalidPassword)
-    pageLogin.isErrorMessageVisible(login.errorMessage)
+    cy.wait('@login').its('response.statusCode').should('eq', 401)
     cy.url().should('eq', url.login)
+    componentNav.isLoginButtonVisible()
   })
 
 })

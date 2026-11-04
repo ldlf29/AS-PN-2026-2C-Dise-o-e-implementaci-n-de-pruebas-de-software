@@ -1,4 +1,3 @@
 {
-  "invalidPassword": "PasswordIncorrecta123",
-  "errorMessage": "Login Failed. Username or Password is incorrect."
+  "invalidPassword": "PasswordIncorrecta123"
 }
