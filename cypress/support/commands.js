@@ -26,6 +26,50 @@ Cypress.Commands.add('loginAPI', (name, password) => {
     })
 })
 
+Cypress.Commands.add('postLoginAPI', (name, password, codeResponse) => {
+    cy.request({
+        method: 'POST',
+        url: `${url.api}/Login`,
+        failOnStatusCode: false,
+        headers: {
+            accept: 'application/json',
+            'content-type': 'application/json'
+        },
+        body: {
+            username: name,
+            password: password
+        }
+    }).then((response) => {
+        expect(response.status).to.eq(codeResponse)
+    })
+})
+
+Cypress.Commands.add('getBooksAPI', () => {
+    cy.request({
+        method: 'GET',
+        url: `${url.api}/Book`,
+        headers: {
+            accept: 'application/json'
+        }
+    }).then((response) => {
+        expect(response.status).to.eq(200)
+        return response.body
+    })
+})
+
+Cypress.Commands.add('getBookAPI', (bookId, codeResponse) => {
+    cy.request({
+        method: 'GET',
+        url: `${url.api}/Book/${bookId}`,
+        failOnStatusCode: false,
+        headers: {
+            accept: 'application/json'
+        }
+    }).then((response) => {
+        expect(response.status).to.eq(codeResponse)
+    })
+})
+
 Cypress.Commands.add('deleteCartAPI', (userId) => {
     cy.request({
         method: 'DELETE',

@@ -12,4 +12,8 @@ class pageLogin {
         cy.get('app-login button').contains('Login').click()
     }
 
+    isErrorMessageVisible(message) {
+        cy.get('app-login').contains(message).should('be.visible')
+    }
+
 } module.exports = new pageLogin();
