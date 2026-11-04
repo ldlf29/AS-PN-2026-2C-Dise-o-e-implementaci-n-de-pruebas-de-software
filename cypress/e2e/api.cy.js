@@ -3,6 +3,18 @@ import book from '../fixtures/book.json'
 
 describe('Casos de prueba de APIs', () => {
 
+    it('API | Comprar carrito exitosamente', () => {
+        cy.loginAPI(user.username, user.password).then((session) => {
+            cy.postCheckOutAPI(session.userDetails.userId, `Bearer ${session.token}`, 200)
+        })
+    })
+
+    it('API | Error al comprar carrito sin token', () => {
+        cy.loginAPI(user.username, user.password).then((session) => {
+            cy.postCheckOutAPI(session.userDetails.userId, '', 401)
+        })
+    })
+
     it('API | Agregar libro a la wishlist exitosamente | Lucas de la Fuente', () => {
         cy.loginAPI(user.username, user.password).then((session) => {
             const token = `Bearer ${session.token}`
